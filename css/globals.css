@@ -1,32 +1,58 @@
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
-tr, td, th {
-    border: black solid;
-    padding: 7px;
+tr,
+td,
+th {
+  border: black solid;
+  padding: 7px;
 }
 
 th {
-    background-color: rgb(216, 189, 189);
+  background-color: rgb(216, 189, 189);
 }
 
 .every-other-row {
-    background-color: rgb(230, 230, 230);
+  background-color: rgb(230, 230, 230);
 }
 
 .a-class {
-    background-color: rgb(162, 250, 250);
+  background-color: rgb(162, 250, 250);
 }
 
 .another-class {
-    background-color: rgb(207, 162, 249);
+  background-color: rgb(207, 162, 249);
 }
 
 .some-class {
-    background-color: rgb(199, 230, 210);
+  background-color: rgb(199, 230, 210);
 }
 
 .another-project {
-    padding-top: 17px;
+  padding-top: 17px;
+}
+
+.form-input {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  width: 25%;
+  justify-content: space-between;
+}
+
+.range {
+  display: flex;
+}
+
+textarea {
+  resize: none;
+}
+
+#age {
+  width: 51%;
+}
+
+#submit {
+  width: 100%;
 }

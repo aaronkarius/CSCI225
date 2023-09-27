@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/globals.css" />
+    <title>CSCI225 Contact Page of Aaron Karius</title>
+  </head>
+  <body>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/K4TOrB7at0Y?si=9W7RUY6qw4K-nUxl"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+    <form action="">
+      <div class="form-input">
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" placeholder="anonymous" required />
+      </div>
+      <div class="form-input">
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" placeholder="anonymous" required />
+      </div>
+      <div class="form-input">
+        <label for="mail">Email</label>
+        <input type="email" name="mail" placeholder="name@domain.com" />
+      </div>
+      <div class="form-input">
+        <label for="telephone">Telephone</label>
+        <input
+          type="tel"
+          name="telephone"
+          placeholder="123-123-1234"
+          pattern="\d{3}-\d{3}-\d{4}"
+        />
+      </div>
+      <div class="form-input">
+        <label for="url">Your Website</label>
+        <input type="url" name="url" placeholder="https://example.com" />
+      </div>
+      <div class="form-input">
+        <label for="age">Age</label>
+        <input
+          type="number"
+          name="age"
+          id="age"
+          placeholder="21"
+          min="1"
+          max="100"
+        />
+      </div>
+      <div class="form-input">
+        Will you recommend this website?
+        <div>
+          <label for="yes">Yes</label>
+          <input id="yes" type="radio" name="recommend" value="yes" />
+        </div>
+        <div>
+          <label for="no">No</label>
+          <input id="no" type="radio" name="recommend" value="no" />
+        </div>
+      </div>
+      <div class="form-input">
+        What is your favorite website?
+        <select name="websites">
+          <option value="Google">Google</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Twitter">Twitter</option>
+          <option value="Time">Time</option>
+        </select>
+      </div>
+      <div class="form-input">
+        Please rate the website.
+        <div class="range">
+          1
+          <input type="range" min="1" max="10" name="rating" />
+          10
+        </div>
+      </div>
+      <div class="form-input">
+        Any additional comments?
+        <textarea name="comment" maxlength="120" rows="7"></textarea>
+      </div>
+      <div class="form-input">
+        <input type="submit" value="submit" id="submit" />
+      </div>
+    </form>
+  </body>
+</html>
