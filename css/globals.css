@@ -13,10 +13,6 @@ th {
   background-color: rgb(216, 189, 189);
 }
 
-.every-other-row {
-  background-color: rgb(230, 230, 230);
-}
-
 .a-class {
   background-color: rgb(162, 250, 250);
 }
@@ -41,14 +37,6 @@ th {
   justify-content: space-between;
 }
 
-.range {
-  display: flex;
-}
-
 textarea {
-  resize: none;
-}
-
-#submit {
-  width: 100%;
+  resize: none !important;
 }
