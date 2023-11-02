@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/globals.css" />
+    <title>Georgia Power Bill calculator</title>
+</head>
+
+<body>
+    <div id="calc-holder">
+        <div id="home">
+            <h1>
+                Georgia Power Bill Calculator
+            </h1>
+            <div class="paragraph">
+                The utility bill calculator is a resource that the Commission is making available that allows a consumer
+                to
+                check the accuracy of his/her monthly electric bill. A bill calculator has been prepared for customers
+                of
+                the
+                Georgia Power Company. This bill calculator applies only to residential customers who are receiving
+                service
+                under the standard Residential Tariff (R-27). For more details regarding Georgia Power's residential
+                tariff
+                offerings, please visit Georgia Power Pricing & Rates.
+                <br>
+                <br>
+                Effective August 2023
+            </div>
+            <form action="javascript:void(0);" id="the-form">
+                <div class="input-holder">
+                    <label for="usage">Enter your Monthly Usage in kilowatt hours (kWh):</label>
+                    <input class="input" type="number" id="usage" required min="1" />
+                </div>
+                <div class="input-holder">
+                    <label for="days">Enter the number of days for you current billing period:</label>
+                    <input class="input" type="number" id="days" required min="1" />
+                </div>
+                <div class="input-holder">
+                    <label for="inside">Is your residence INSIDE the city limits of your city?:</label>
+                    <div class="checkbox-holder">
+                        <input class="input-checkbox" type="checkbox" id="inside" />
+                    </div>
+                </div>
+                <div class="input-holder">
+                    <label for="summer">Is this a Summer month (June - September)?:</label>
+                    <div class="checkbox-holder">
+                        <input class="input-checkbox" type="checkbox" id="summer" />
+                    </div>
+                </div>
+                <div class="input-holder">
+                    <label for="tax">Enter Sales Tax(%):</label>
+                    <input class="input" type="number" id="tax" required min="1" />
+                </div>
+                <div class="actions">
+                    <div class="action" id="submit">
+                        <button>Submit</button>
+                    </div>
+                    <div class="action" id="reset">
+                        <button>Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="details">
+            <h1>Details of your bill</h1>
+            <div id="detail-holder">
+                <div class="category">
+                    <div><b>Items</b></div>
+                    <div><b>Fees</b></div>
+                </div>
+                <div class="category">
+                    <div>Base Charge:</div>
+                    <div id="baseCharge"></div>
+                </div>
+                <div class="category">
+                    <div>Tier 1 Component (kWh):</div>
+                    <div id="tier1"></div>
+                </div>
+                <div class="category">
+                    <div>Tier 2 Component (kWh):</div>
+                    <div id="tier2"></div>
+                </div>
+                <div class="category">
+                    <div>Tier 3 Component (kWh):</div>
+                    <div id="tier3"></div>
+                </div>
+                <div class="category">
+                    <div><b>Base Revenue -- Base Bill Subtotal:</b></div>
+                    <div id="baseRevenue"></div>
+                </div>
+                <div class="category">
+                    <div>Fuel Cost Rider:</div>
+                    <div id="fuelCostRider"></div>
+                </div>
+                <div class="category">
+                    <div>Demand Side Management Residential Rider:</div>
+                    <div id="demandSide"></div>
+                </div>
+                <div class="category">
+                    <div>Nuclear Construction Cost Recovery Rider:</div>
+                    <div id="nuclearConstruction"></div>
+                </div>
+                <div class="category">
+                    <div>Environmental Compliance Cost Recovery Rider:</div>
+                    <div id="environmentCompliance"></div>
+                </div>
+                <div class="category">
+                    <div><b>Total Revenue -- Current Service Subtotal:</b></div>
+                    <div id="totalRevenue"></div>
+                </div>
+                <div class="category">
+                    <div>Franchise Fee:</div>
+                    <div id="franchiseFee"></div>
+                </div>
+                <div class="category">
+                    <div><b>Total (excluding tax):</b></div>
+                    <div id="total"></div>
+                </div>
+                <div class="category">
+                    <div><b>Total (w/ tax):</b></div>
+                    <div id="taxedTotal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100
+
+        const calculate = () => {
+            const usage = parseFloat(document.getElementById("usage")?.value);
+            const days = parseFloat(document.getElementById("days")?.value);
+            const inside = document.getElementById("inside")?.checked;
+            const summer = document.getElementById("summer")?.checked;
+            const tax = parseFloat(document.getElementById("tax")?.value);
+
+            if (usage && days && tax) {
+                const baseCharge = round(0.4603 * days);
+                const tier1 = round((usage > 650 ? 650 : usage) * (summer ? 0.066678 : 0.062404));
+                const tier2 = usage > 650 ? round((usage > 1000 ? 350 : usage - 650) * (summer ? 0.110748 : 0.062404)) : 0.00;
+                const tier3 = usage > 1000 ? round(usage * (summer ? 0.114625 : 0.062404)) : 0.00;
+                const baseRevenue = round(baseCharge + tier1 + tier2 + tier3);
+
+                const fuelCostRider = round(usage * (summer ? 0.045876 : 0.042859));
+                const demandSide = round(baseRevenue * 0.015989);
+                const nuclearConstruction = round(baseRevenue * 0.041562);
+                const environmentCompliance = round(baseRevenue * 0.162813);
+                const totalRevenue = baseRevenue + fuelCostRider + demandSide + nuclearConstruction + environmentCompliance;
+
+                const franchiseFee = round(totalRevenue * (inside ? 0.030674 : 0.011839));
+                const total = round(totalRevenue + franchiseFee);
+                const taxedTotal = round(total * (1 + (tax / 100)));
+
+                document.getElementById("baseCharge").innerHTML = baseCharge.toFixed(2);
+                document.getElementById("tier1").innerHTML = tier1.toFixed(2);
+                document.getElementById("tier2").innerHTML = tier2.toFixed(2);
+                document.getElementById("tier3").innerHTML = tier3.toFixed(2);
+                document.getElementById("baseRevenue").innerHTML = baseRevenue.toFixed(2);
+                document.getElementById("fuelCostRider").innerHTML = fuelCostRider.toFixed(2);
+                document.getElementById("demandSide").innerHTML = demandSide.toFixed(2);
+                document.getElementById("nuclearConstruction").innerHTML = nuclearConstruction.toFixed(2);
+                document.getElementById("environmentCompliance").innerHTML = environmentCompliance.toFixed(2);
+                document.getElementById("totalRevenue").innerHTML = totalRevenue.toFixed(2);
+                document.getElementById("franchiseFee").innerHTML = franchiseFee.toFixed(2);
+                document.getElementById("total").innerHTML = total.toFixed(2);
+                document.getElementById("taxedTotal").innerHTML = taxedTotal.toFixed(2);
+
+                if (total > 500) window.open("https://www.georgiapower.com/residential/save-money-and-energy/products-programs.html")
+            }
+        }
+
+        const reset = () => {
+            document.getElementById("the-form").reset();
+        }
+
+        document.getElementById("submit").addEventListener("click", calculate, false);
+        document.getElementById("reset").addEventListener("click", reset, false);
+    </script>
+</body>
+
+</html>
