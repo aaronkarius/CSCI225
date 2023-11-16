@@ -1,123 +1,190 @@
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 tr,
 td,
 th {
-  border: black solid;
-  padding: 7px;
+    border: black solid;
+    padding: 7px;
 }
 
 th {
-  background-color: rgb(216, 189, 189);
+    background-color: rgb(216, 189, 189);
 }
 
 .a-class {
-  background-color: rgb(162, 250, 250);
+    background-color: rgb(162, 250, 250);
 }
 
 .another-class {
-  background-color: rgb(207, 162, 249);
+    background-color: rgb(207, 162, 249);
 }
 
 .some-class {
-  background-color: rgb(199, 230, 210);
+    background-color: rgb(199, 230, 210);
 }
 
 .another-project {
-  padding-top: 17px;
+    padding-top: 17px;
 }
 
 .form-input {
-  display: flex;
-  align-items: center;
-  padding: 7px;
-  width: 25%;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    width: 25%;
+    justify-content: space-between;
 }
 
 textarea {
-  resize: none !important;
+    resize: none !important;
 }
 
 .paragraph {
-  padding: 0 27px 27px 37px;
+    padding: 0 27px 27px 37px;
 }
 
 .form {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .input {
-  width: 75px;
-  margin-left: 17px;
+    width: 75px;
+    margin-left: 17px;
 }
 
 .input-holder {
-  padding: 17px;
-  display: flex;
-  justify-content: flex-end;
+    padding: 17px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .checkbox-holder {
-  /* width is slightly higher to account for regular input padding and border size */
-  width: 79px;
-  margin-left: 17px;
+    /* width is slightly higher to account for regular input padding and border size */
+    width: 79px;
+    margin-left: 17px;
 }
 
 .input-checkbox {
-  margin: 0;
+    margin: 0;
 }
 
 .checkbox {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .actions {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .action {
-  padding: 7px;
+    padding: 7px;
 }
 
 #home,
 #details {
-  width: 50%;
-  border: 4px solid #d3d3d3;
-  border-radius: 20px;
-  padding: 27px;
-  margin: 17px 37px 17px 17px;
+    width: 50%;
+    border: 4px solid #d3d3d3;
+    border-radius: 20px;
+    padding: 27px;
+    margin: 17px 37px 17px 17px;
 }
 
 #home button {
-  padding: 7px;
-  margin: 7px;
+    padding: 7px;
+    margin: 7px;
 }
 
 #calc-holder {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 #detail-holder {
-  border: 1px solid #d3d3d3;
+    border: 1px solid #d3d3d3;
 }
 
 .category {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: thin black solid;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: thin black solid;
 }
 
 .category:nth-child(2n) {
-  background-color: #d3d3d3;
+    background-color: #d3d3d3;
 }
 
 .category div {
-  padding: 7px 17px 7px 17px;
+    padding: 7px 17px 7px 17px;
+}
+
+#car-html {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+#car-body {
+    height: 100%;
+    width: 100%;
+}
+
+#car-holder {
+    padding: 27px;
+    height: 100%;
+    width: 100%;
+}
+
+#header-car {
+    color: white;
+}
+
+#main-holder {
+    height: 100%;
+    width: 100%;
+    background-image: url(../img/car.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#question-holder {
+    width: 40%;
+    height: 25%;
+    margin-left: -50%;
+    background-color: rgba(239, 239, 240, 0.7);
+}
+
+#question {
+    padding-left: 17px;
+}
+
+#answers {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+#input {
+    padding: 27px;
+    display: flex;
+    align-items: center;
+}
+
+#yes,
+#no {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+}
+
+#text {
+    padding: 7px;
 }
